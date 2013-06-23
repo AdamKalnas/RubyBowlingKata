@@ -3,10 +3,13 @@ class Bowling
   def score (pins)
     total = 0
     i = 0
+    frame = 0
 
-    while i < pins.length do
+
+    while i < pins.length && frame < 10 do
       if IsStrike?(pins[i])
         total += ScoreStrike(pins, i)
+        frame += 1
         i += 1
         next
       elsif IsSpare?(pins[i], pins[i+1])
@@ -15,6 +18,7 @@ class Bowling
         total += pins[i] + pins[i+1]
       end
       i += 2
+      frame += 1
     end
     total
   end
